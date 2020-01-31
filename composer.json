@@ -12,16 +12,17 @@
     "require": {
         "php": ">=7.0.8",
         "composer/installers": "^1.0.20",
+        "drupal/core-composer-scaffold": "^8.8.1",
+        "drupal/core-recommended": "^8.8",
+        "pantheon-systems/drupal-integrations": "^8",
+        "pantheon-systems/quicksilver-pushback": "^2",
+        "drush/drush": "~8.3",
+        "drupal/console": "^1",
         "cweagans/composer-patches": "^1.0",
-        "drupal-composer/drupal-scaffold": "^2.0.1",
         "drupal/config_direct_save": "^1.0",
         "drupal/config_installer": "^1.0",
-        "drupal/console": "^1",
-        "drupal/core": "^8.8",
         "drush-ops/behat-drush-endpoint": "^9.3",
-        "drush/drush": "~8.3",
         "rvtraveller/qs-composer-installer": "^1.1",
-        "drupal/core-recommended": "^8.8",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
@@ -37,7 +38,7 @@
         "jcalderonzumba/gastonjs": "^1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
         "mikey179/vfsstream": "^1.2",
-        "phpunit/phpunit": "^4.8",
+        "phpunit/phpunit": "^6.5",
         "squizlabs/php_codesniffer": "^3.4.0",
         "symfony/css-selector": "^2.8"
     },
@@ -93,19 +94,16 @@
             "export-configuration": "drush config-export --yes"
         },
         "drupal-scaffold": {
-            "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8-scaffolding/{version}/{path}",
-            "includes": [
-                "sites/default/default.services.pantheon.preproduction.yml",
-                "sites/default/settings.pantheon.php"
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
             ],
-            "excludes": [
-                ".csslintrc",
-                ".editorconfig",
-                ".eslintignore",
-                ".eslintrc.json",
-                ".htaccess",
-                "web.config"
-            ]
+            "locations": {
+                "web-root": "./web"
+            },
+            "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[project-root]/pantheon.upstream.yml": false
+            }            
         }
     },
     "config": {
